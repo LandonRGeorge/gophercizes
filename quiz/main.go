@@ -12,13 +12,12 @@ type problem struct {
 }
 
 func parseLines(lines [][]string) []problem {
-	ret := make([]problem, 0)
-	for _, line := range lines {
-		p := problem{
-			line[0],
-			line[1],
-		}
-		ret = append(ret, p)
+	ret := make([]problem, len(lines))
+	for idx, line := range lines {
+		q := line[0]
+		a := line[1]
+		p := problem{q, a}
+		ret[idx] = p
 	}
 	return ret
 }
@@ -41,6 +40,8 @@ func main() {
 		if answer == p.a {
 			fmt.Println("right!")
 			correct++
+		} else {
+			fmt.Println("WRONG!")
 		}
 	}
 	fmt.Printf("You got %d out of %d correct\n", correct, len(lines))
